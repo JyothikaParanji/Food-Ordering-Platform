@@ -1,0 +1,211 @@
+CREATE DATABASE `hotel` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+SELECT `bill`.`billId`,
+    `bill`.`orderId`,
+    `bill`.`billDate`,
+    `bill`.`billTime`,
+    `bill`.`status`
+FROM `hotel`.`bill`;
+INSERT INTO `hotel`.`bill`
+(`billId`,
+`orderId`,
+`billDate`,
+`billTime`,
+`status`)
+VALUES
+(<{billId: }>,
+<{orderId: 0}>,
+<{billDate: 0000-00-00}>,
+<{billTime: }>,
+<{status: }>);
+UPDATE `hotel`.`bill`
+SET
+`billId` = <{billId: }>,
+`orderId` = <{orderId: 0}>,
+`billDate` = <{billDate: 0000-00-00}>,
+`billTime` = <{billTime: }>,
+`status` = <{status: }>
+WHERE `billId` = <{expr}>;
+DELETE FROM `hotel`.`bill`
+WHERE <{where_expression}>;
+CREATE TABLE `bill` (
+  `billId` int unsigned NOT NULL AUTO_INCREMENT,
+  `orderId` int unsigned NOT NULL DEFAULT '0',
+  `billDate` date NOT NULL DEFAULT '0000-00-00',
+  `billTime` varchar(45) NOT NULL DEFAULT '',
+  `status` varchar(45) NOT NULL DEFAULT '',
+  PRIMARY KEY (`billId`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+SELECT `category`.`categoryId`,
+    `category`.`name`
+FROM `hotel`.`category`;
+
+CREATE TABLE `category` (
+  `categoryId` int unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(70) NOT NULL DEFAULT '',
+  PRIMARY KEY (`categoryId`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO `hotel`.`category`
+(`categoryId`,
+`name`)
+VALUES
+(<{categoryId: }>,
+<{name: }>);
+
+UPDATE `hotel`.`category`
+SET
+`categoryId` = <{categoryId: }>,
+`name` = <{name: }>
+WHERE `categoryId` = <{expr}>;
+DELETE FROM `hotel`.`category`
+WHERE <{where_expression}>;
+CREATE TABLE `item` (
+  `itemId` int unsigned NOT NULL AUTO_INCREMENT,
+  `categoryId` int unsigned NOT NULL DEFAULT '0',
+  `name` varchar(45) NOT NULL DEFAULT '',
+  `quantity` int unsigned NOT NULL DEFAULT '0',
+  `cost` varchar(45) NOT NULL DEFAULT '',
+  PRIMARY KEY (`itemId`)
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+SELECT `item`.`itemId`,
+    `item`.`categoryId`,
+    `item`.`name`,
+    `item`.`quantity`,
+    `item`.`cost`
+FROM `hotel`.`item`;
+INSERT INTO `hotel`.`item`
+(`itemId`,
+`categoryId`,
+`name`,
+`quantity`,
+`cost`)
+VALUES
+(<{itemId: }>,
+<{categoryId: 0}>,
+<{name: }>,
+<{quantity: 0}>,
+<{cost: }>);
+UPDATE `hotel`.`item`
+SET
+`itemId` = <{itemId: }>,
+`categoryId` = <{categoryId: 0}>,
+`name` = <{name: }>,
+`quantity` = <{quantity: 0}>,
+`cost` = <{cost: }>
+WHERE `itemId` = <{expr}>;
+DELETE FROM `hotel`.`item`
+WHERE <{where_expression}>;
+CREATE TABLE `login` (
+  `loginId` int unsigned NOT NULL AUTO_INCREMENT,
+  `userName` varchar(45) NOT NULL DEFAULT '',
+  `password` varchar(45) NOT NULL DEFAULT '',
+  PRIMARY KEY (`loginId`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+SELECT `login`.`loginId`,
+    `login`.`userName`,
+    `login`.`password`
+FROM `hotel`.`login`;
+INSERT INTO `hotel`.`login`
+(`loginId`,
+`userName`,
+`password`)
+VALUES
+(<{loginId: }>,
+<{userName: }>,
+<{password: }>);
+UPDATE `hotel`.`login`
+SET
+`loginId` = <{loginId: }>,
+`userName` = <{userName: }>,
+`password` = <{password: }>
+WHERE `loginId` = <{expr}>;
+DELETE FROM `hotel`.`login`
+WHERE <{where_expression}>;
+SELECT `orderdetails`.`id`,
+    `orderdetails`.`orderId`,
+    `orderdetails`.`itemId`,
+    `orderdetails`.`quantity`,
+    `orderdetails`.`status`
+FROM `hotel`.`orderdetails`;
+CREATE TABLE `orderdetails` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `orderId` int unsigned NOT NULL DEFAULT '0',
+  `itemId` int unsigned NOT NULL DEFAULT '0',
+  `quantity` int unsigned NOT NULL DEFAULT '0',
+  `status` varchar(45) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+INSERT INTO `hotel`.`orderdetails`
+(`id`,
+`orderId`,
+`itemId`,
+`quantity`,
+`status`)
+VALUES
+(<{id: }>,
+<{orderId: 0}>,
+<{itemId: 0}>,
+<{quantity: 0}>,
+<{status: }>);
+UPDATE `hotel`.`orderdetails`
+SET
+`id` = <{id: }>,
+`orderId` = <{orderId: 0}>,
+`itemId` = <{itemId: 0}>,
+`quantity` = <{quantity: 0}>,
+`status` = <{status: }>
+WHERE `id` = <{expr}>;
+DELETE FROM `hotel`.`orderdetails`
+WHERE <{where_expression}>;
+CREATE TABLE `ordermaster` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `customerNumber` int unsigned NOT NULL DEFAULT '0',
+  `customerName` varchar(20) NOT NULL DEFAULT '',
+  `orderDate` date NOT NULL DEFAULT '0000-00-00',
+  `orderTime` time NOT NULL DEFAULT '00:00:00',
+  `status` varchar(15) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+SELECT `ordermaster`.`id`,
+    `ordermaster`.`customerNumber`,
+    `ordermaster`.`customerName`,
+    `ordermaster`.`orderDate`,
+    `ordermaster`.`orderTime`,
+    `ordermaster`.`status`
+FROM `hotel`.`ordermaster`;
+INSERT INTO `hotel`.`ordermaster`
+(`id`,
+`customerNumber`,
+`customerName`,
+`orderDate`,
+`orderTime`,
+`status`)
+VALUES
+(<{id: }>,
+<{customerNumber: 0}>,
+<{customerName: }>,
+<{orderDate: 0000-00-00}>,
+<{orderTime: 00:00:00}>,
+<{status: }>);
+UPDATE `hotel`.`ordermaster`
+SET
+`id` = <{id: }>,
+`customerNumber` = <{customerNumber: 0}>,
+`customerName` = <{customerName: }>,
+`orderDate` = <{orderDate: 0000-00-00}>,
+`orderTime` = <{orderTime: 00:00:00}>,
+`status` = <{status: }>
+WHERE `id` = <{expr}>;
+UPDATE `hotel`.`ordermaster`
+SET
+`id` = <{id: }>,
+`customerNumber` = <{customerNumber: 0}>,
+`customerName` = <{customerName: }>,
+`orderDate` = <{orderDate: 0000-00-00}>,
+`orderTime` = <{orderTime: 00:00:00}>,
+`status` = <{status: }>
+WHERE `id` = <{expr}>;
+DELETE FROM `hotel`.`ordermaster`
+WHERE <{where_expression}>;
+
+
